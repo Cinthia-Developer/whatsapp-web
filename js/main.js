@@ -1,36 +1,44 @@
-    var mensaje = document.getElementById("mensajes");
-    var chat = document.getElementById("chat");
-	mensaje.addEventListener('keyup', validarTecla);
-// para que la tecla (enter) funcione:
-function validarTecla(evt){
-    if(evt.keyCode == 13 && mensaje.value.length != 0){
-        agregarMensaje();
+function onMensajeKey(evt){
+    if(evt.keyCode == 13){
+        var elInputMensajes = document.getElementById("mensajes");
+        crearMensaje(elInputMensajes.value); 
+        crearChat();
+        elInputMensajes.value = "";
     }
 }
-// funcion para agregar un mensaje al chat con hora de envio:
-function agregarMensaje(){
-    var nuevoMensaje = mensaje.value;
-// para agregar la hora de envio al chat:
-    var fecha = new Date();
-	var hora = fecha.getHours();
-	var min = fecha.getMinutes();
-// para agregar mensaje al chat:    
-	var div1 = document.createElement("div");
-	div1.className = "w-message w-message-out";
-    chat.appendChild(div1);
+
+function crearMensaje(_mensaje){
+    var mensajeIn = '<div class="w-message w-message-in">' + 
+                    '<div class="w-message-text">' + 
+                    '<h5 class="blue-1">Andrea Lamas</h5>' + 
+                    '<p>Chicos han visto el nuevo corte de Aldo?</p>' +
+                    '<div class="time">11:12</div>' +
+                    ' </div>' +
+                    '</div>';
+    var d = new Date();
+    var mensajeOut ='<div class="w-message w-message-out">' +
+                    '<div class="w-message-text">' +
+                    '<p>' + _mensaje + '</p>' +          
+                    '<div class="time">'+ d.getHours() + ':' + d.getMinutes() + '</div>' +
+                    '</div>' +  
+                    ' </div>';
     
-	var div2 = document.createElement("div");
-	div2.className = "w-message-text";
-    div1.appendChild(div2);
-    
-	var parrafo = document.createElement("p");
-    div2.appendChild(parrafo);
-    parrafo.innerHTML = nuevoMensaje;
-    
-	var time = document.createElement("div");
-	time.className = "time";
-    div2.appendChild(time);
-    time.innerHTML = hora + ":" + min;
-// para limpiar el input una vez enviado el mensaje:	
-	mensaje.value="";
+    var conversacion= document.getElementById("conversacion");
+    conversacion.innerHTML+=mensajeOut;
+}
+function crearChat(_mensaje){
+    _mensaje = document.getElementById("mensajes").value;
+    var listaChats = document.getElementById("chatsUltimo");
+    var listItem = document.createElement("li")
+    var chatItem =  '<div class="avatar">' + 
+                    '<img src="image/logocodeacademy.png" alt="" class="wh-44">' + 
+                    '<h4 class="w-contact-name">Laboratoria Perú</h4>' +
+                    '<p class="w-last-message" id="mensaje">'+ _mensaje + '</p>' +
+                    '</div>' +
+                    '<div class="time" id="hora">14:27</div>';
+							
+
+    listItem.innerHTML+= chatItem;
+    listaChats.insertBefore(listItem, listaChats.childNodes[0]);
+    listaChats.innerHTML+=chatItem;
 }
