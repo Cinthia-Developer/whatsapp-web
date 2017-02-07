@@ -1,4 +1,5 @@
 var listItem = null;
+// funcion principal valida la tecla enter, llama funciones y da valores:
 function onMensajeKey(evt){
     if(evt.keyCode == 13){
         var f=new Date();
@@ -9,6 +10,7 @@ function onMensajeKey(evt){
         inputMensajes.value = "";
     }
 }
+// funcion para crear los chats (burbujas verdes):
 function crearMensaje(_mensaje, _hora){
     var mensajeIn = '<div class="w-message w-message-in">' + 
                     '<div class="w-message-text">' + 
@@ -28,15 +30,15 @@ function crearMensaje(_mensaje, _hora){
 	mensaje.innerHTML = _mensaje;
      var hour = document.getElementById("hora");
 	hour.innerHTML = _hora;
-    
-// para que el scroll este posicionado al mensaje mas reciente:   
+    // para que el scroll este posicionado al mensaje mas reciente:   
     var chatBox = document.getElementById("chat");
     chatBox.innerHTML += mensajeOut;
     chatBox.scrollTop = chatBox.scrollHeight;
 }
+
+// funcion para crear una lista de chats con datos validados:
 function crearChat(_mensaje){
     var listaChats = document.getElementById("chatsUltimo");
-    
     if(listItem==null){
     listItem = document.createElement("li")
     var chatItem =  '<div class="avatar">' + 
