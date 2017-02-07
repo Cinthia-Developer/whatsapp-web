@@ -1,3 +1,4 @@
+var listItem = null;
 function onMensajeKey(evt){
     if(evt.keyCode == 13){
         var elInputMensajes = document.getElementById("mensajes");
@@ -22,16 +23,22 @@ function crearMensaje(_mensaje){
                     '<div class="time">'+ d.getHours() + ':' + d.getMinutes() + '</div>' +
                     '</div>' +  
                     ' </div>';
+   var mensaje = document.getElementsByClassName("w-last-message")[0];
+	mensaje.innerHTML = _mensaje;
     
-    var conversacion= document.getElementById("conversacion");
-    conversacion.innerHTML+=mensajeOut;
+// para que el scroll este posicionado al mensaje mas reciente:   
+    var chatBox = document.getElementById("chat");
+    chatBox.innerHTML += mensajeOut;
+    chatBox.scrollTop = chatBox.scrollHeight;
 }
 function crearChat(_mensaje, _hora){
     d = new Date();
     _hora = d.getHours() + ':' + d.getMinutes();
     _mensaje = document.getElementById("mensajes").value;
     var listaChats = document.getElementById("chatsUltimo");
-    var listItem = document.createElement("li")
+    
+    if(listItem==null){
+    listItem = document.createElement("li")
     var chatItem =  '<div class="avatar">' + 
                     '<img src="image/logocodeacademy.png" alt="" class="wh-44">' + 
                     '<h4 class="w-contact-name">Laboratoria Perú</h4>' +
@@ -43,4 +50,5 @@ function crearChat(_mensaje, _hora){
     listItem.innerHTML+= chatItem;
     listaChats.insertBefore(listItem, listaChats.childNodes[0]);
     listaChats.innerHTML+=chatItem;
+    }
 }
