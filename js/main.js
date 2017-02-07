@@ -1,10 +1,10 @@
 var listItem = null;
 function onMensajeKey(evt){
     if(evt.keyCode == 13){
-        var elInputMensajes = document.getElementById("mensajes");
-        crearMensaje(elInputMensajes.value); 
-        crearChat();
-        elInputMensajes.value = "";
+        var inputMensajes = document.getElementById("mensajes");
+        crearMensaje(inputMensajes.value); 
+        crearChat(inputMensajes.value);
+        inputMensajes.value = "";
     }
 }
 
@@ -32,9 +32,10 @@ function crearMensaje(_mensaje){
     chatBox.scrollTop = chatBox.scrollHeight;
 }
 function crearChat(_mensaje, _hora){
-    d = new Date();
-    _hora = d.getHours() + ':' + d.getMinutes();
-    _mensaje = document.getElementById("mensajes").value;
+    d = new Date(); //-------------------
+    _hora = d.getHours() + ':' + d.getMinutes();// ----------
+    _mensaje = document.getElementById("mensajes").value;//--
+    
     var listaChats = document.getElementById("chatsUltimo");
     
     if(listItem==null){
