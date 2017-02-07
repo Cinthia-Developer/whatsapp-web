@@ -26,7 +26,9 @@ function crearMensaje(_mensaje){
     var conversacion= document.getElementById("conversacion");
     conversacion.innerHTML+=mensajeOut;
 }
-function crearChat(_mensaje){
+function crearChat(_mensaje, _hora){
+    d = new Date();
+    _hora = d.getHours() + ':' + d.getMinutes();
     _mensaje = document.getElementById("mensajes").value;
     var listaChats = document.getElementById("chatsUltimo");
     var listItem = document.createElement("li")
@@ -35,7 +37,7 @@ function crearChat(_mensaje){
                     '<h4 class="w-contact-name">Laboratoria Perú</h4>' +
                     '<p class="w-last-message" id="mensaje">'+ _mensaje + '</p>' +
                     '</div>' +
-                    '<div class="time" id="hora">14:27</div>';
+                    '<div class="time" id="hora">'+ _hora +'</div>';
 							
 
     listItem.innerHTML+= chatItem;
