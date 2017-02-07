@@ -1,14 +1,15 @@
 var listItem = null;
 function onMensajeKey(evt){
     if(evt.keyCode == 13){
+        var f=new Date();
+        var cad=f.getHours()+":"+f.getMinutes(); 
         var inputMensajes = document.getElementById("mensajes");
-        crearMensaje(inputMensajes.value); 
-        crearChat(inputMensajes.value);
+        crearMensaje(inputMensajes.value, cad); 
+        crearChat(inputMensajes.value, cad);
         inputMensajes.value = "";
     }
 }
-
-function crearMensaje(_mensaje){
+function crearMensaje(_mensaje, _hora){
     var mensajeIn = '<div class="w-message w-message-in">' + 
                     '<div class="w-message-text">' + 
                     '<h5 class="blue-1">Andrea Lamas</h5>' + 
@@ -20,22 +21,20 @@ function crearMensaje(_mensaje){
     var mensajeOut ='<div class="w-message w-message-out">' +
                     '<div class="w-message-text">' +
                     '<p>' + _mensaje + '</p>' +          
-                    '<div class="time">'+ d.getHours() + ':' + d.getMinutes() + '</div>' +
+                    '<div class="time">'+ _hora + '</div>' +
                     '</div>' +  
                     ' </div>';
    var mensaje = document.getElementsByClassName("w-last-message")[0];
 	mensaje.innerHTML = _mensaje;
+     var hour = document.getElementById("hora");
+	hour.innerHTML = _hora;
     
 // para que el scroll este posicionado al mensaje mas reciente:   
     var chatBox = document.getElementById("chat");
     chatBox.innerHTML += mensajeOut;
     chatBox.scrollTop = chatBox.scrollHeight;
 }
-function crearChat(_mensaje, _hora){
-    d = new Date(); //-------------------
-    _hora = d.getHours() + ':' + d.getMinutes();// ----------
-    _mensaje = document.getElementById("mensajes").value;//--
-    
+function crearChat(_mensaje){
     var listaChats = document.getElementById("chatsUltimo");
     
     if(listItem==null){
@@ -45,9 +44,8 @@ function crearChat(_mensaje, _hora){
                     '<h4 class="w-contact-name">Laboratoria Perú</h4>' +
                     '<p class="w-last-message" id="mensaje">'+ _mensaje + '</p>' +
                     '</div>' +
-                    '<div class="time" id="hora">'+ _hora +'</div>';
+                    '<div class="time" id="hora">'+ f.getHours()+":"+f.getMinutes() +'</div>';
 							
-
     listItem.innerHTML+= chatItem;
     listaChats.insertBefore(listItem, listaChats.childNodes[0]);
     listaChats.innerHTML+=chatItem;
