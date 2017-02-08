@@ -14,16 +14,17 @@ var listaDeChats = [
     new nuevoChat("Priscila Vega", "image/contacto2.jpg", "Okey chau cuidate mucho.!", "14:50"),
     new nuevoChat("Diana Cordova", "image/contacto1.jpg", "Todo esta bien", "10:17"),
     new nuevoChat("Diana Cordova", "image/contacto001.jpg", "Cuando llegues me llamas", "09:55"),
-    new nuevoChat("Jorge Zábala", "image/contacto002.jpg", "Voy a demorar un poquito, me esperas", "07:01")
+    new nuevoChat("Diana Cordova", "image/contacto002.jpg", "Voy a demorar un poquito, me esperas", "07:01")
 ]
 //------------------------------------------Comienzo-----------------------
 var listaItem = null;
 function iniciar(){
     alert("Se Cargo la Página");
+    buscador();
 	iniciarListaChat();
 }
 
-function iniciarListaChat(_ultimoMensaje, _ultimaHora){
+function iniciarListaChat(){
 	var listaOnChat = document.getElementById("lista-chats");
     for (var c in listaDeChats){
 		var htmlChatItem = '<li><div class="avatar">' +
@@ -60,6 +61,23 @@ function validateEnter(evt) {
 		crearMensaje(inputMensajes.value, cad);
         inputMensajes.value = "";
 	}
+}
+//--Funcion para buscar chat en la lista de chats:
+function buscador(){
+      var buscador = document.getElementById("search");
+    var contacto = document.getElementsByTagName("h4");
+    var forEach = Array.prototype.forEach;
+
+    buscador.addEventListener("keyup", function(e){
+    var eleccion = this.value;
+
+    forEach.call(contacto, function(c){
+          if(c.innerHTML.toLowerCase().search(eleccion.toLowerCase()) == -1)
+              c.parentNode.parentNode.style.display = "none";   
+          else
+             c.parentNode.parentNode.style.display = "block";        
+        });
+    },false);
 }
 //--Funcion para crear chat con burbuja y pasar valores al li:
 function crearMensaje(_mensaje, _hora) {
@@ -111,21 +129,4 @@ function actualizarCabeceraChat(_contactName, _imageURL, _estado) {
 	chatHeader.getElementsByTagName('img')[0].src = _imageURL;
     var chat = document.getElementById("chat");
     chat.innerHTML="";
-}
-//--Funcion para buscar chat en la lista de chats:
-function buscador(){
-      var buscador = document.getElementById("search");
-    var contacto = document.getElementsByTagName("h4");
-    var forEach = Array.prototype.forEach;
-
-    buscador.addEventListener("keyup", function(e){
-    var eleccion = this.value;
-
-    forEach.call(contacto, function(c){
-          if(c.innerHTML.toLowerCase().search(eleccion.toLowerCase()) == -1)
-              c.parentNode.parentNode.style.display = "none";   
-          else
-             c.parentNode.parentNode.style.display = "block";        
-        });
-    },false);
 }
