@@ -19,11 +19,9 @@ var listaDeChats = [
 //------------------------------------------Comienzo-----------------------
 var listaItem = null;
 function iniciar(){
-    alert("Se Cargo la Página");
     buscador();
 	iniciarListaChat();
 }
-
 function iniciarListaChat(){
 	var listaOnChat = document.getElementById("lista-chats");
     for (var c in listaDeChats){
