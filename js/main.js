@@ -54,14 +54,16 @@ function onChatItemClick(evt){
 
 function validateEnter(evt) {
 	if (evt.keyCode == 13) {
+        var f=new Date();
+        var cad=f.getHours()+":"+f.getMinutes();
 		var inputMensajes = document.getElementById("mensajes");
-        crearChat(inputMensajes.value);
-		crearMensaje(inputMensajes.value);
+        crearChat(inputMensajes.value, cad);
+		crearMensaje(inputMensajes.value, cad);
         inputMensajes.value = "";
 	}
 }
 //--Funcion para crear chat con burbuja y pasar valores al li:
-function crearMensaje(_mensaje) {
+function crearMensaje(_mensaje, _hora) {
 	var mensajeIn = '<div class="w-message w-message-in">' +
 		'<div class="w-message-text">' +
 		'<h5 class="green-1">Maria Paula Rivarola</h5>' +
@@ -74,11 +76,13 @@ function crearMensaje(_mensaje) {
 	var mensajeOut = '<div class="w-message w-message-out">' +
 		'<div class="w-message-text">' +
 		'<p>' + _mensaje + '</p>' +
-		'<div class="time">' + d.getHours() + ':' + d.getMinutes(); +
+		'<div class="time">' + _hora +
         '</div>' + '</div>' + '</div>';
 
 	var mensaje = listaItem.getElementsByClassName("w-last-message")[0];
 	mensaje.innerHTML = _mensaje;
+    var hour = document.getElementById("hora");
+	hour.innerHTML = _hora;
 
 	var scroll = document.getElementById("chat");
 	scroll.innerHTML += mensajeOut;
@@ -90,8 +94,8 @@ function crearChat(_mensaje) {
     if(listaItem == null){
 		listaItem = document.createElement('LI');
         var htmlChatItem = '<div class="avatar">' +
-			'<img src="image/logocodeacademy.png" alt="" class="wh-44">' +
-			'<h4 class="w-contact-name">Laboratoria Perú</h4>' +
+			'<img src="image/perfil de facebook.jpg" alt="" class="wh-44">' +
+			'<h4 class="w-contact-name">Cinthia Mashiel</h4>' +
 			'<p class="w-last-message" id="mensaje">' + _mensaje + '</p>' +
 			'</div>' +
 			'<div class="time" id="hora">14:27</div>';
