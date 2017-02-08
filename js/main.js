@@ -14,17 +14,16 @@ var listaDeChats = [
     new nuevoChat("Priscila Vega", "image/contacto2.jpg", "Okey chau cuidate mucho.!", "14:50"),
     new nuevoChat("Diana Cordova", "image/contacto1.jpg", "Todo esta bien", "10:17"),
     new nuevoChat("Diana Cordova", "image/contacto001.jpg", "Cuando llegues me llamas", "09:55"),
-    new nuevoChat("Diana Cordova", "image/contacto002.jpg", "Voy a demorar un poquito, me esperas", "07:01")
+    new nuevoChat("Jorge Zábala", "image/contacto002.jpg", "Voy a demorar un poquito, me esperas", "07:01")
 ]
 //------------------------------------------Comienzo-----------------------
 var listaItem = null;
 function iniciar(){
     alert("Se Cargo la Página");
-    buscador();
 	iniciarListaChat();
 }
 
-function iniciarListaChat(){
+function iniciarListaChat(_ultimoMensaje, _ultimaHora){
 	var listaOnChat = document.getElementById("lista-chats");
     for (var c in listaDeChats){
 		var htmlChatItem = '<li><div class="avatar">' +
