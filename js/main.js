@@ -6,14 +6,21 @@ function nuevoChat(_name, _image, _ultimoMensaje, _ultimaHora){
 	this.ultimoMensajeHora = _ultimaHora;
 }
 var listaDeChats = [
-	new nuevoChat("chat 1", "image/logocodeacademy.png", "Todo esta bien", "20:10"),
-	new nuevoChat("chat 2", 'image/logocodeacademy.png'),
-	new nuevoChat("chat 2", 'image/logocodeacademy.png')
+	new nuevoChat("Luis Aguilar", "image/contacto8.jpg", "Mañana nos vemos", "20:10"),
+	new nuevoChat("Dayara Mendoza", "image/contacto7.jpg", "Entonces mañana lo planeamos mejor", "20:03"),
+    new nuevoChat("Arturo Fonseca", "image/contacto6.jpg", "No te preocupes, yo lo hago", "19:20"),
+    new nuevoChat("Briyit Otazú", "image/contacto5.jpg", "Dijo para mañana", "18:05"),
+    new nuevoChat("Fransua Alferez", "image/contacto3.jpg", "Cuando.?", "16:10"),
+    new nuevoChat("Priscila Vega", "image/contacto2.jpg", "Okey chau cuidate mucho.!", "14:50"),
+    new nuevoChat("Diana Cordova", "image/contacto1.jpg", "Todo esta bien", "10:17"),
+    new nuevoChat("Diana Cordova", "image/contacto001.jpg", "Cuando llegues me llamas", "09:55"),
+    new nuevoChat("Diana Cordova", "image/contacto002.jpg", "Voy a demorar un poquito, me esperas", "07:01")
 ]
 //------------------------------------------Comienzo-----------------------
 var listaItem = null;
 function iniciar(){
     alert("Se Cargo la Página");
+    buscador();
 	iniciarListaChat();
 }
 
@@ -100,19 +107,20 @@ function actualizarCabeceraChat(_contactName, _imageURL, _estado) {
 	chatHeader.getElementsByClassName('w-users-messages')[0].innerHTML = _estado;
 	chatHeader.getElementsByTagName('img')[0].src = _imageURL;
 }
-//--------------------------------------------buscador funcional---
-    var search = document.getElementById("search"),
-    contacto = document.getElementsByTagName("h4"),
-    forEach = Array.prototype.forEach;
+//--Funcion para buscar chat en la lista de chats:
+function buscador(){
+      var buscador = document.getElementById("search");
+    var contacto = document.getElementsByTagName("h4");
+    var forEach = Array.prototype.forEach;
 
-    search.addEventListener("keyup", function(e){
-    var choice = this.value;
+    buscador.addEventListener("keyup", function(e){
+    var eleccion = this.value;
 
-    forEach.call(contacto, function(f){
-      if (f.innerHTML.toLowerCase().search(choice.toLowerCase()) == -1)
-          f.parentNode.parentNode.style.display = "none";   
-      else
-         f.parentNode.parentNode.style.display = "block";        
-    });
-}, 
-false);
+    forEach.call(contacto, function(c){
+          if(c.innerHTML.toLowerCase().search(eleccion.toLowerCase()) == -1)
+              c.parentNode.parentNode.style.display = "none";   
+          else
+             c.parentNode.parentNode.style.display = "block";        
+        });
+    },false);
+}
