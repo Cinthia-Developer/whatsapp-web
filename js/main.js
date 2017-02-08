@@ -19,7 +19,6 @@ var listaDeChats = [
 //------------------------------------------Comienzo-----------------------
 var listaItem = null;
 function iniciar(){
-    alert("Se Cargo la Página");
     buscador();
 	iniciarListaChat();
 }
@@ -51,7 +50,7 @@ function onChatItemClick(evt){
 	var imgURL = evt.currentTarget.getElementsByClassName('wh-44')[0].src;
 	actualizarCabeceraChat(contactName, imgURL, "En Linea");
 }
-
+//--Funcion para validar la tecla enter:
 function validateEnter(evt) {
 	if (evt.keyCode == 13) {
         var f=new Date();
