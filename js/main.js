@@ -110,6 +110,8 @@ function actualizarCabeceraChat(_contactName, _imageURL, _estado) {
 	chatHeader.getElementsByClassName('w-contact-name')[0].innerHTML = _contactName;
 	chatHeader.getElementsByClassName('w-users-messages')[0].innerHTML = _estado;
 	chatHeader.getElementsByTagName('img')[0].src = _imageURL;
+    var chat = document.getElementById("chat");
+    chat.innerHTML="";
 }
 //--Funcion para buscar chat en la lista de chats:
 function buscador(){
