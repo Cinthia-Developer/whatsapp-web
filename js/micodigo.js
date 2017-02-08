@@ -13,8 +13,8 @@ var listaDeChats = [
     new nuevoChat("Fransua Alferez", "image/contacto3.jpg", "Cuando.?", "16:10"),
     new nuevoChat("Priscila Vega", "image/contacto2.jpg", "Okey chau cuidate mucho.!", "14:50"),
     new nuevoChat("Diana Cordova", "image/contacto1.jpg", "Todo esta bien", "10:17"),
-    new nuevoChat("Diana Cordova", "image/contacto001.jpg", "Cuando llegues me llamas", "09:55"),
-    new nuevoChat("Diana Cordova", "image/contacto002.jpg", "Voy a demorar un poquito, me esperas", "07:01")
+    new nuevoChat("Paul Chavez", "image/contacto001.jpg", "Cuando llegues me llamas", "09:55"),
+    new nuevoChat("Franklin Rivaola", "image/contacto002.jpg", "Voy a demorar un poquito, me esperas", "07:01")
 ]
 //------------------------------------------Comienzo-----------------------
 var listaItem = null;
