@@ -25,7 +25,7 @@ function iniciar(){
 function iniciarListaChat(){
 	var listaOnChat = document.getElementById("lista-chats");
     for (var c in listaDeChats){
-		var htmlChatItem = '<li><div class="avatar">' +
+		var htmlChatItem = '<li draggable="true"><div class="avatar">' +
 			'<img src="' + listaDeChats[c].imageURL +  '" alt="" class="wh-44">' +
 			'<h4 class="w-contact-name">' + listaDeChats[c].name + '</h4>' +
 			'<p class="w-last-message" id="mensaje">' + listaDeChats[c].ultimoMensaje + '</p>' +
